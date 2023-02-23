@@ -7,7 +7,7 @@ import clsx from 'clsx'
 
 export function Footer({ children, previous, next }) {
 
-  // console.log(!!children)
+  // console.log(children)
   return (
     <footer className={clsx('text-sm leading-6', previous || next ? 'mt-12' : 'mt-16')}>
       {(previous || next) && (

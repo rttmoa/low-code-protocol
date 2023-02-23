@@ -88,6 +88,7 @@ export default function App({ Component, pageProps, router }) {
 
 
       <SearchProvider>
+        {/* 头部 -  左侧：低代码 DevOps 平台协议  右侧：亮度/Github图标 */}
         {showHeader && (
           <Header
             hasNav={Boolean(Component.layoutProps?.Layout?.nav)}

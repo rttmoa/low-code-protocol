@@ -144,9 +144,7 @@ function useTableOfContents(tableOfContents) {
 }
 
 export function ContentsLayoutOuter({ children, layoutProps, ...props }) {
-  const { currentSection, registerHeading, unregisterHeading } = useTableOfContents(
-    layoutProps.tableOfContents
-  )
+  const { currentSection, registerHeading, unregisterHeading } = useTableOfContents(layoutProps.tableOfContents)
 
   return (
     <SidebarLayout
@@ -167,6 +165,7 @@ export function ContentsLayoutOuter({ children, layoutProps, ...props }) {
   )
 }
 
+/**--- 总 - 内容部分 ---**/
 export function ContentsLayout({ children, meta, classes, tableOfContents, section }) {
   const router = useRouter()
   const toc = [
@@ -175,10 +174,11 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
   ]
 
   const { currentSection, registerHeading, unregisterHeading } = useTableOfContents(toc)
-  let { prev, next } = usePrevNext()
+  let { prev, next } = usePrevNext()  // --- 翻页：上一页/下一页 ---
 
   return (
     <div className="max-w-3xl mx-auto pt-10 xl:max-w-none xl:ml-0 xl:mr-[15.5rem] xl:pr-16">
+      {/* 内容 -> 头部 -> 一级标题 & 二级标题 & 描述 */}
       <PageHeader
         title={meta.title}
         description={meta.description}
@@ -186,6 +186,7 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
         badge={{ key: 'Tailwind CSS version', value: meta.featureVersion }}
         section={section}
       />
+      {/* 内容 -> 内容 xdm 文档 */}
       <ContentsContext.Provider value={{ registerHeading, unregisterHeading }}>
         {classes ? (
           <>
@@ -202,11 +203,12 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
             id="content-wrapper"
             className="relative z-20 prose prose-slate mt-8 dark:prose-dark"
           >
+            {/* -------------------------渲染mdx文档----------------------------------- */}
             <MDXProvider components={{ Heading }}>{children}</MDXProvider>
           </div>
         )}
       </ContentsContext.Provider>
-
+      {/* 内容 -> Footer  */}
       <Footer previous={prev} next={next}>
         <Link
           href={`https://github.com/steedos/low-code-protocol/edit/main/src/pages${router.pathname}.mdx`}

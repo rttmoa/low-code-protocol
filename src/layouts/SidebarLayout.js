@@ -67,6 +67,7 @@ function nearestScrollableContainer(el) {
   return el
 }
 
+/**--- 侧边栏一级导航和二级导航 ---**/
 function Nav({ nav, children, fallbackHref, mobile = false }) {
   const router = useRouter()
   const activeItemRef = useRef()
@@ -496,6 +497,7 @@ function Wrapper({ allowOverflow, children }) {
   return <div className={allowOverflow ? undefined : 'overflow-hidden'}>{children}</div>
 }
 
+/**--- 总 - 侧边栏布局 ---**/
 export function SidebarLayout({
   children,
   navIsOpen,

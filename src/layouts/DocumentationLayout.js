@@ -6,7 +6,8 @@ import { Title } from '@/components/Title'      //-->   引入标题
 import { documentationNav } from '@/navs/documentation'    //-->   引入侧边栏快速向导数组
 
 
-/**--- 文档布局 ---**/
+
+/**--- 总 - 文档布局(侧边栏及内容区域) ---**/
 export function DocumentationLayout(props) {
   let router = useRouter()
   // console.log('router', router.pathname)

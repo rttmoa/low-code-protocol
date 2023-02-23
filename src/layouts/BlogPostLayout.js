@@ -17,6 +17,7 @@ let grid = 'max-w-3xl mx-auto xl:max-w-none xl:grid xl:grid-cols-[1fr_50rem] xl:
 
 /**--- 博文布局 ---**/
 export function BlogPostLayout({ children, meta, slug, latestPosts }) {
+  // console.log(123)
   return (
     <div className="mx-auto mt-10 px-4 pb-28 sm:mt-16 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
       <main>

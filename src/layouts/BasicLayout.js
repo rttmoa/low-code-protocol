@@ -5,7 +5,7 @@ import { Footer } from '@/components/Footer'        //-->  引入Footer组件
 
 
 
-/**--- 基本布局 ---**/
+/**--- 基本布局 - 未渲染 ---**/
 export function BasicLayout({ children }) {
   // console.log(children)
 
