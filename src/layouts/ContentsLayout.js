@@ -14,10 +14,13 @@ export const ContentsContext = createContext()
 
 
 
-
+/**--- 渲染右侧 内容 -> 本页内容 数据  (树结构) ---**/
 function TableOfContents({ tableOfContents, currentSection }) {
   let sidebarContext = useContext(SidebarContext)
-  let isMainNav = Boolean(sidebarContext)
+  // let isMainNav = Boolean(sidebarContext)
+  let isMainNav = !!sidebarContext
+  console.log(sidebarContext)
+  console.log(isMainNav)
 
   function closeNav() {
     if (isMainNav) {
@@ -176,6 +179,11 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
   const { currentSection, registerHeading, unregisterHeading } = useTableOfContents(toc)
   let { prev, next } = usePrevNext()  // --- 翻页：上一页/下一页 ---
 
+  // console.log(router)
+  // console.log(toc)     // 本页内容的树结构
+  // console.log(currentSection) // 当前滚动到的children[]中的内容
+
+
   return (
     <div className="max-w-3xl mx-auto pt-10 xl:max-w-none xl:ml-0 xl:mr-[15.5rem] xl:pr-16">
       {/* 内容 -> 头部 -> 一级标题 & 二级标题 & 描述 */}
@@ -210,13 +218,12 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
       </ContentsContext.Provider>
       {/* 内容 -> Footer  */}
       <Footer previous={prev} next={next}>
-        <Link
-          href={`https://github.com/steedos/low-code-protocol/edit/main/src/pages${router.pathname}.mdx`}
-        >
+        <Link href={`https://github.com/steedos/low-code-protocol/edit/main/src/pages${router.pathname}.mdx`}>
           <a className="hover:text-slate-900 dark:hover:text-slate-400">Edit this page on GitHub</a>
         </Link>
       </Footer>
 
+      {/* 内容 -> 右侧三级导航 -> 本页内容 */}
       <div className="fixed z-20 top-[3.8125rem] bottom-0 right-[max(0px,calc(50%-45rem))] w-[19.5rem] py-10 px-8 overflow-y-auto hidden xl:block">
         {toc.length > 0 && (
           <TableOfContents tableOfContents={toc} currentSection={currentSection} />
