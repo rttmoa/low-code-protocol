@@ -7,6 +7,9 @@ function v(href) {
   return `${href}?v=${FAVICON_VERSION}`
 }
 
+
+
+
 export default class Document extends NextDocument {
   static async getInitialProps(ctx) {
     const initialProps = await NextDocument.getInitialProps(ctx)

@@ -4,19 +4,19 @@ import Head from 'next/head'
 
 import React, { useState, useEffect } from 'react';
 
-// Register amis render 
+// Register amis render
 const Amis = props => {
   const {schema, data} = props;
-  
+
   return (
     <>
-      <Head>  
+      <Head>
         <title>Amis</title>
         <link rel="stylesheet" href="https://unpkg.com/amis@1.8.0-beta.2/sdk/sdk.css" />
       </Head>
       <div id="amis-root"></div>
-      <Script 
-        src="https://unpkg.com/amis@1.8.0-beta.2/sdk/sdk.js" 
+      <Script
+        src="https://unpkg.com/amis@1.8.0-beta.2/sdk/sdk.js"
         onLoad={() => {
           /*global amisRequire */
           let amis = amisRequire('amis/embed');
@@ -25,7 +25,7 @@ const Amis = props => {
     </>
   )
 }
- 
+
 Builder.registerComponent(Amis, {
   name: 'Amis',
   inputs: [
@@ -87,15 +87,15 @@ function AmisPage() {
               }
            ],
            "inputs":[
-              
+
            ]
         }
     }
     const pageData = {}
-    if (process.browser) 
+    if (process.browser)
       return <BuilderComponent model="page" content={pageSchema} data={pageData}/>
-    else 
+    else
       return null
 }
-  
+
 export default AmisPage
