@@ -4,7 +4,7 @@ const visit = require('unist-util-visit')
 
 
 
-// 树结构
+// 树结构 - git中cloneElement相似
 module.exports.withLinkRoles = () => {
   return (tree) => {
     // console.log(tree)
